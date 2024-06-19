@@ -1,14 +1,18 @@
 import hashlib
 
-file_name = input("Enter file name: ")
-md5_hash = input("Enter MD5 hash to check: ")
+md5_hash = hashlib.md5()
 
-with open(file_name, "rb") as f:
-    file_hash = hashlib.md5()
-    while chunk := f.read(8192):
-        file_hash.update(chunk)
+def md5_hash_gen(file_name):
+    with open(file_name, 'rb') as f:
+        while chunk := f.read(8192):
+            md5_hash.update(chunk)
+    return md5_hash.hexdigest()
 
-if(md5_hash == file_hash.hexdigest()):
-    print("Match found! Hash value: " + file_hash.hexdigest())
-else:
-    print("MD5 hash does not match. Hash value: " + file_hash.hexdigest())
+file_name = input('Enter the file name: ')
+md5_existing = input('Enter the existing MD5 hash: ')
+
+md5_generated = md5_hash_gen(file_name)
+
+#print(f'Generated MD5 hash: {md5_generated}')
+
+print('Match found!') if md5_existing == md5_generated else print('No match found! File is corrupt')
