@@ -1,2 +1,2 @@
 # python-hashlib
-Puthon hashlib library usage
+Python hashlib library usage
