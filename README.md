@@ -1,2 +1,2 @@
-# md5-checker
-MD5 checksum checker
+# python-hashlib
+Puthon hashlib library usage
